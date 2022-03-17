@@ -27,5 +27,10 @@ namespace MoviesAPI.Services
         {
             return _genreList;
         }
+
+        public Genre GetGenreById(int id)
+        {
+            return _genreList.FirstOrDefault(x => x.Id == id);
+        }
     }
 }
