@@ -14,14 +14,17 @@ namespace MoviesAPI.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet] // api/genres
+        [HttpGet("list")] // api/genres/list
+        [HttpGet("/allgenres")] //allgenres
         public List<Genre> Get()
         {
             return _repository.GetAllGenres();
         }
 
-        [HttpGet]
-        public Genre Get(int id)
+        // api/genres/{id}
+        [HttpGet("{id:int}/{param2=stoycho}")]
+        public Genre Get(int id, string param2)
         {
             var genre = _repository.GetGenreById(id);
 
