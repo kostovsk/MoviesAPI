@@ -17,9 +17,9 @@ namespace MoviesAPI.Controllers
         [HttpGet] // api/genres
         [HttpGet("list")] // api/genres/list
         [HttpGet("/allgenres")] //allgenres
-        public ActionResult<List<Genre>> Get()
+        public async Task<ActionResult<List<Genre>>> Get()
         {
-            return _repository.GetAllGenres();
+            return await _repository.GetAllGenres();
         }
 
         // api/genres/{id}
