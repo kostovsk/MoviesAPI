@@ -12,6 +12,36 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+Logger<StartupBase> logger = new Logger<StartupBase>(new LoggerFactory());
+
+app.Use(async (context, next) =>
+{
+    using (var swapStream = new MemoryStream())
+    {
+        var originalResponseBody = context.Response.Body;
+        context.Response.Body = swapStream;
+
+        await next.Invoke();
+
+        swapStream.Seek(0, SeekOrigin.Begin);
+        string responseBody = new StreamReader(swapStream).ReadToEnd();
+        swapStream.Seek(0, SeekOrigin.Begin);
+
+        await swapStream.CopyToAsync(originalResponseBody);
+        context.Response.Body = originalResponseBody;
+
+        logger.LogInformation(responseBody);
+    }
+});
+
+app.Map("/map1", (app) =>
+{
+    app.Run(async context =>
+    {
+        await context.Response.WriteAsync("I am short-circuiting the pipeline");
+    });
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
