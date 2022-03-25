@@ -25,3 +25,10 @@ C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\Mov
 C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\obj\Debug\net6.0\ref\MoviesAPI.dll
 C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\obj\Debug\net6.0\MoviesAPI.pdb
 C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\obj\Debug\net6.0\MoviesAPI.genruntimeconfig.cache
+C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Stoycho\source\repos\React-and-ASP.NET-Core\Module 1 - introduction\MoviesAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
