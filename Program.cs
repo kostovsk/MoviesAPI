@@ -10,9 +10,13 @@ builder.Services.AddSingleton<IRepository, InMemoryRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+using var loggerFactory = LoggerFactory.Create(loggingBuilder => loggingBuilder
+    .SetMinimumLevel(LogLevel.Trace)
+    .AddConsole());
+
 var app = builder.Build();
 
-Logger<StartupBase> logger = new Logger<StartupBase>(new LoggerFactory());
+ILogger<StartupBase> logger = loggerFactory.CreateLogger<StartupBase>();
 
 app.Use(async (context, next) =>
 {
