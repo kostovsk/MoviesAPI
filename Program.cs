@@ -1,15 +1,20 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
+using MoviesAPI.Filter;
 using MoviesAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(typeof(MyExceptionFilter));
+});
 builder.Services.AddResponseCaching();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 builder.Services.AddSingleton<IRepository, InMemoryRepository>();
+builder.Services.AddTransient<MyActionFilter>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -20,7 +25,7 @@ using var loggerFactory = LoggerFactory.Create(loggingBuilder => loggingBuilder
 
 var app = builder.Build();
 
-ILogger<StartupBase> logger = loggerFactory.CreateLogger<StartupBase>();
+ILogger<Program> logger = loggerFactory.CreateLogger<Program>();
 
 app.Use(async (context, next) =>
 {
