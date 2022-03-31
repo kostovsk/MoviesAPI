@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
     var frontendURL = builder.Configuration.GetValue<string>("frontend_url");
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyMethod();
+        builder.WithOrigins(frontendURL).AllowAnyHeader().AllowAnyMethod();
     });
 });
 
