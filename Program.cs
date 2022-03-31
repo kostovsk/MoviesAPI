@@ -14,7 +14,6 @@ builder.Services.AddControllers(options =>
     options.Filters.Add(typeof(MyExceptionFilter));
     options.Filters.Add(typeof(ParseBadRequest));
 }).ConfigureApiBehaviorOptions(BadRequestBehavior.Parse);
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -31,6 +30,7 @@ builder.Services.AddCors(options =>
         builder.WithOrigins(frontendURL).AllowAnyHeader().AllowAnyMethod();
     });
 });
+builder.Services.AddAutoMapper(typeof(Program));
 
 using var loggerFactory = LoggerFactory.Create(loggingBuilder => loggingBuilder
     .AddConsole());
