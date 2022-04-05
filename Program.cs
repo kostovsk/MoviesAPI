@@ -27,7 +27,8 @@ builder.Services.AddCors(options =>
     var frontendURL = builder.Configuration.GetValue<string>("frontend_url");
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins(frontendURL).AllowAnyHeader().AllowAnyMethod();
+        builder.WithOrigins(frontendURL).AllowAnyHeader().AllowAnyMethod()
+            .WithExposedHeaders(new string[] {"totalAmountOfRecords"});
     });
 });
 builder.Services.AddAutoMapper(typeof(Program));
