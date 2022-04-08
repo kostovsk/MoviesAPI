@@ -37,9 +37,16 @@ namespace MoviesAPI.Controllers
 
         // api/genres/{id}
         [HttpGet("{id:int}", Name="getGenre")]
-        public ActionResult<Genre> Get(int id)
+        public async Task<ActionResult<GenreDTO>> Get(int id)
         {
-            throw new NotImplementedException();
+            var genre = await _context.Genres.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (genre == null)
+            {
+                return NotFound();
+            }
+
+            return _mapper.Map<GenreDTO>(genre);
         }
 
         [HttpPost]
@@ -52,9 +59,18 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] Genre genre)
+        public async Task<ActionResult> Put(int id, [FromBody] GenreCreationDTO genreCreationDTO)
         {
-            throw new NotImplementedException();
+            var genre = await _context.Genres.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (genre == null)
+            {
+                return NotFound();
+            }
+
+            genre = _mapper.Map(genreCreationDTO, genre);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
 
         [HttpDelete]
