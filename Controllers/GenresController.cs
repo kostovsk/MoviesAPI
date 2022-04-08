@@ -58,7 +58,7 @@ namespace MoviesAPI.Controllers
             return NoContent();
         }
 
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] GenreCreationDTO genreCreationDTO)
         {
             var genre = await _context.Genres.FirstOrDefaultAsync(x => x.Id == id);
