@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MoviesAPI;
 using MoviesAPI.APIBehavior;
 using MoviesAPI.Filter;
+using MoviesAPI.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,7 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IFileStorageService, AzureStorageService>();
 
 using var loggerFactory = LoggerFactory.Create(loggingBuilder => loggingBuilder
     .AddConsole());
