@@ -8,6 +8,7 @@ using NetTopologySuite.Operation.Valid;
 
 namespace MoviesAPI.Controllers
 {
+    [Route("api/movietheaters")]
     [ApiController]
     public class MovieTheatersController: ControllerBase
     {
