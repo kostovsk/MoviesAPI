@@ -16,7 +16,7 @@ namespace MoviesAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
-                    Summmary = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Trailer = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InTheaters = table.Column<bool>(type: "bit", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),

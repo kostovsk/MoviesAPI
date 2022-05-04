@@ -8,7 +8,7 @@ namespace MoviesAPI.Entities
         [StringLength(maximumLength: 75)]
         [Required]
         public string Title { get; set; }
-        public string Summmary { get; set; }
+        public string Summary { get; set; }
         public string Trailer { get; set; }
         public bool InTheaters { get; set; }
         public DateTime ReleaseDate { get; set; }

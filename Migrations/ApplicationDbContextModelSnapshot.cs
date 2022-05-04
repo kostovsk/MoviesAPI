@@ -88,7 +88,7 @@ namespace MoviesAPI.Migrations
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Summmary")
+                    b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -190,7 +190,7 @@ namespace MoviesAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("MoviesAPI.Entities.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("MoviesActors")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -241,6 +241,8 @@ namespace MoviesAPI.Migrations
             modelBuilder.Entity("MoviesAPI.Entities.Movie", b =>
                 {
                     b.Navigation("MovieTheatersMovies");
+
+                    b.Navigation("MoviesActors");
 
                     b.Navigation("MoviesGenres");
                 });
