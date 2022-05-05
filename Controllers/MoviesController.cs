@@ -14,7 +14,7 @@ namespace MoviesAPI.Controllers
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
         private readonly IFileStorageService fileStorageService;
-        private string container = "";
+        private string container = "movies";
 
         public MoviesController(ApplicationDbContext context, IMapper mapper, IFileStorageService fileStorageService)
         {
@@ -44,8 +44,7 @@ namespace MoviesAPI.Controllers
             if (movieCreationDTO.Poster != null)
             {
                 //TO DO fix file service, currently errors out and doesn't return url string
-                //movie.Poster = await fileStorageService.SaveFile(container, movieCreationDTO.Poster);
-                movie.Poster = "https://static.onecms.io/wp-content/uploads/sites/6/2019/09/south-park-s05e08-2000.jpg";
+                movie.Poster = await fileStorageService.SaveFile(container, movieCreationDTO.Poster);
             }
 
             AnnotateActorsOrder(movie);
