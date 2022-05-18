@@ -97,7 +97,7 @@ namespace MoviesAPI.Controllers
             return movie.Id;
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("putget/{id:int}")]
         public async Task<ActionResult<MoviePutGetDTO>> PutGet(int id)
         {
             var movieActionResult = await Get(id);
