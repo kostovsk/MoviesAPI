@@ -162,5 +162,21 @@ namespace MoviesAPI.Controllers
                 }
             }
         }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var movie = await context.Movies.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            context.Remove(movie);
+            await context.SaveChangesAsync();
+            await fileStorageService.DeleteFile(movie.Poster, container);
+            return NoContent();
+        }
     }
 }
